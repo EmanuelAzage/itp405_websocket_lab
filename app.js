@@ -7,7 +7,6 @@ let wss = new WebSocket.Server({port: port});
 wss.on('connection', (ws) => {
   ws.on('message', (message) => {
     console.log(`Recieved: ${message}`);
-    // ws.send(message);
 
     wss.clients.forEach((client) => {
       client.send(message);
