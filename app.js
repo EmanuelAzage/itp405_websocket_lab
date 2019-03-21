@@ -9,7 +9,10 @@ wss.on('connection', (ws) => {
     console.log(`Recieved: ${message}`);
 
     wss.clients.forEach((client) => {
-      client.send(message);
+      // don't want to send the message back to the client that sent it to us
+      if(ws != client) {
+        client.send(message);
+      }
     });
 
   });
